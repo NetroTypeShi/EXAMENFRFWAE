@@ -1,0 +1,59 @@
+DISEÑÉ UN CÓDIGO PARA QUE TE APAREZCA UN DIBUJO ALEATORIAMENTECON LÍNEAS ELIPSES Y CUADRAOS
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+  </head>
+  <body>
+    <main>
+    </main>
+    <script>
+    function setup() {
+      createCanvas(windowWidth, windowHeight); // Establece el tamaño del lienzo según el tamaño de la ventana
+      background(255); // Fondo blanco
+      noLoop(); // Esto hace que el dibujo solo se genere una vez
+    
+      // Llamada a la función para dibujar elementos aleatorios
+      dibujarAleatorio();
+    }
+    
+    function dibujarAleatorio() {
+      // Establecer un número aleatorio de elementos a dibujar
+      let numElementos = int(random(5, 20));
+    
+      for (let i = 0; i < numElementos; i++) {
+        // Generar una posición aleatoria
+        let x = random(width);
+        let y = random(height);
+        
+        // Elegir un color aleatorio
+        let colorAleatorio = color(random(255), random(255), random(255));
+        fill(colorAleatorio);
+        stroke(0); // Borde negro
+    
+        // Aleatoriamente decidir qué tipo de forma dibujar
+        let tipo = int(random(3)); // 0 para círculo, 1 para rectángulo, 2 para línea
+    
+        if (tipo === 0) {
+          // Dibujar un círculo
+          let diametro = random(20, 100);
+          ellipse(x, y, diametro, diametro);
+        } else if (tipo === 1) {
+          // Dibujar un rectángulo
+          let w = random(20, 100);
+          let h = random(20, 100);
+          rect(x, y, w, h);
+        } else {
+          // Dibujar una línea
+          let x2 = random(width);
+          let y2 = random(height);
+          line(x, y, x2, y2);
+        }
+      }
+    }</script>
+  </body>
+</html>

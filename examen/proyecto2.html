@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2</title>
+</head>
+<body>
+    <!-- Valores de los ranges y los resultados de las operaciones -->
+    <p>Valor 1: <span id="valor1">0</span></p>
+    <input type="range" min="0" max="100" id="range1" value="0">
+    <p>Valor 2: <span id="valor2">0</span></p>
+    <input type="range" min="0" max="100" id="range2" value="0">
+    
+    <p>Resultados:</p>
+    <p>Sumar: <span id="suma">0</span></p>
+    <p>Restar: <span id="resta">0</span></p>
+    <p>Multiplicar: <span id="multiplicacion">0</span></p>
+    <p>Dividir: <span id="division">0</span></p>
+
+    <script>
+        // Referencias a los elementos
+        const range1 = document.getElementById('range1');
+        const range2 = document.getElementById('range2');
+        
+        const valor1 = document.getElementById('valor1');
+        const valor2 = document.getElementById('valor2');
+        
+        const suma = document.getElementById('suma');
+        const resta = document.getElementById('resta');
+        const multiplicacion = document.getElementById('multiplicacion');
+        const division = document.getElementById('division');
+
+        // Función para actualizar los valores y realizar las operaciones
+        function actualizarValores() {
+            const val1 = parseInt(range1.value);
+            const val2 = parseInt(range2.value);
+            
+            // Actualizar los valores mostrados en los <span>
+            valor1.textContent = val1;
+            valor2.textContent = val2;
+            
+            // Realizar y mostrar las operaciones
+            suma.textContent = val1 + val2;
+            resta.textContent = val1 - val2;
+            multiplicacion.textContent = val1 * val2;
+            
+            // Evitar la división por cero
+            if (val2 !== 0) {
+                division.textContent = (val1 / val2).toFixed(2); // Mostrar con 2 decimales
+            } else {
+                division.textContent = 'Error (División por 0)';
+            }
+        }
+
+        // Añadir event listeners para que se actualicen al cambiar el valor de los ranges
+        range1.addEventListener('input', actualizarValores);
+        range2.addEventListener('input', actualizarValores);
+
+        // Llamar a la función una vez al cargar para mostrar los valores iniciales
+        actualizarValores();
+    </script>
+</body>
+</html>

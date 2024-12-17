@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1</title>
+    <style>
+        #marcador {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="marcador" style="color: green;">0</div> <!-- Marcador inicial -->
+    <button id="incrementar">+</button>
+    <button id="decrementar">-</button>
+    <script>
+        // Inicializamos el marcador en 0
+        let marcador = 0;
+        
+        // Referencias a los elementos
+        const marcadorElement = document.getElementById('marcador');
+        const incrementarBtn = document.getElementById('incrementar');
+        const decrementarBtn = document.getElementById('decrementar');
+
+        // Función para actualizar el color del marcador
+        function actualizarColor() {
+            if (marcador < 5) {
+                marcadorElement.style.color = 'green';
+            } else if (marcador >= 5 && marcador <= 7) {
+                marcadorElement.style.color = 'yellow';
+            } else {
+                marcadorElement.style.color = 'red';
+            }
+        }
+
+        // Función para actualizar el marcador en el DOM
+        function actualizarMarcador() {
+            marcadorElement.textContent = marcador;
+            actualizarColor();
+        }
+
+        // Evento para el botón "+"
+        incrementarBtn.addEventListener('click', function() {
+            if (marcador < 10) {
+                marcador++;  // Incrementar el marcador
+                actualizarMarcador();
+            }
+        });
+
+        // Evento para el botón "-"
+        decrementarBtn.addEventListener('click', function() {
+            if (marcador > 0) {
+                marcador--;  // Decrementar el marcador
+                actualizarMarcador();
+            }
+        });
+    </script>
+    <p></p>
+    
+</body>
+</html>
